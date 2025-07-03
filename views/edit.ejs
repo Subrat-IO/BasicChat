@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit your chat</title>
+    
+</head>
+<body>
+       <style>
+  body {
+    background-color: #f1f5f9;
+    font-family: Arial, sans-serif;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #94a3b8;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1e40af;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.02);
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+</style>
+    <h3>Edit Your chats: <%= chat.id %>
+  <p>This message is sent from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
+</h3>
+
+<form action="/chats/<%= chat._id %>?_method=PUT" method="POST">
+  <textarea name="newMSg" rows="10" cols="30"><%= chat.message %></textarea><br>
+  <button>Edit</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+body{
+    margin-left: 20px;
+    display: inline-block;
+}
+.chat{
+    background-color: rgb(101, 136, 166);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.message{
+color: white;
+background-color: rgba(12, 12, 176, 0.544);
+border-radius: 10px;
+padding: 10px;
+}
+
+button {
+  background-color: #1e40af; /* Deep blue */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8; /* Lighter blue on hover */
+  transform: scale(1.05);     /* Slight zoom effect */
+}
+
+button:active {
+  transform: scale(0.98);     /* Press effect */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
