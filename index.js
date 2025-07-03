@@ -96,6 +96,10 @@ app.delete("/chats/:id", async(req,res)=>{
     console.log(DeletedChat);
     res.redirect("/chats");
 })
+app.get("/chats", async (req, res) => {
+  let chatt = await Chat.find();
+  res.render("index.ejs", { chatt });  // ✅ MATCHES FILE NAME
+});
 
 app.listen(8080,()=>{
     console.log("server is listening at 8080")
