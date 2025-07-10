@@ -39,7 +39,8 @@ app.get("/chats/new", (req, res) => {
 });
 
 app.post("/chats", async (req, res) => {
-  let { from, to, message } = req.body;
+  try{
+    let { from, to, message } = req.body;
   let newChat = new Chat({
     from,
     to,
@@ -49,7 +50,11 @@ app.post("/chats", async (req, res) => {
 
   await newChat.save();
   res.redirect("/chats");
+    } catch(err){
+      next(err);
+    }
 });
+
 
 app.get("/chats/:id/edit", async (req, res) => {
   let { id } = req.params;
