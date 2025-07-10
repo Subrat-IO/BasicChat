@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Chat = require("./models/chat.js");
 const methodOverride = require("method-override");
+const ExpressError = require("./ExpressError");
 
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,7 +20,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect("mongodb://127.0.0.1:27017/fakewhatsapp");
 }
 
 // Routes
@@ -66,8 +67,19 @@ app.put("/chats/:id", async (req, res) => {
 app.delete("/chats/:id", async (req, res) => {
   let { id } = req.params;
   await Chat.findByIdAndDelete(id);
+  if(!chat){
+ throw new ExpressError (404, "page removed");
+
+  }
   res.redirect("/chats");
 });
+
+// error handling middleware
+
+app.use((err,req,res)=>{
+  let {status = 500, message = "some error countered"}= err;
+  res.status (status).send(message);
+})
 
 // Start server
 const PORT = process.env.PORT || 8080;
