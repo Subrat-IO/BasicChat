@@ -20,7 +20,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/fakewhatsapp");
+  await mongoose.connect("mongodb+srv://subratsethi501_db_user:C2O6uOkbSz8bqesT@cluster1.bjrmke4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1");
 }
 
 // Routes
@@ -69,14 +69,20 @@ app.put("/chats/:id", async (req, res) => {
   res.redirect("/chats");
 });
 
-app.delete("/chats/:id", async (req, res) => {
-  let { id } = req.params;
-  await Chat.findByIdAndDelete(id);
-  if(!chat){
- throw new ExpressError (404, "page removed");
+app.delete("/chats/:id", async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    // store deleted chat
+    let chat = await Chat.findByIdAndDelete(id);
 
+    if (!chat) {
+      throw new ExpressError(404, "Chat not found");
+    }
+
+    res.redirect("/chats");
+  } catch (err) {
+    next(err);
   }
-  res.redirect("/chats");
 });
 
 // error handling middleware
