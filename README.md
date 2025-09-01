@@ -12,7 +12,6 @@ A simple chat application where users can add, edit, and delete messages. Each m
 
 ⏰ Timestamps — Every message shows when it was created/edited.
 
-🗂️ Persistent History — (optional) messages can be saved in a database or local storage.
 
 🛠️ Tech Stack
 
@@ -20,9 +19,9 @@ Depending on your implementation:
 
 Frontend (UI): HTML, CSS, JavaScript
 
-Backend (server, optional): Node.js / Express
+Backend (server): Node.js / Express
 
-Database (optional): MongoDB / MySQL / Local JSON / LocalStorage
+Database: MongoDB/Local JSON / LocalStorage
 
 
 
